@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-pages-post-list-tsx","path":"/post-list/","result":{"data":{"allMdx":{"totalCount":1,"nodes":[{"excerpt":"프로젝트 구조\n프로젝트를 만들면 여러 파일들이 자동으로 생성됩니다. 그 중 루트 폴더에는 Prettier 설정 파일을 포함한 여러 파일이 있습니다. 그 중 아래 파일들이 GatsbyJS 를 사용할 때 중요한 것 같습니다. gatsby-browser…","slug":"testSome","timeToRead":1}]}},"pageContext":{}},"staticQueryHashes":["3649515864"]}
