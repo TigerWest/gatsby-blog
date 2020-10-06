@@ -16,7 +16,6 @@ export default function PostList({ data }: any) {
         {posts?.nodes?.map(v => (
           <Box
             key={v.slug}
-            // width={}
             css={css(
               mq({
                 width: [
@@ -38,7 +37,7 @@ export default function PostList({ data }: any) {
               excerpt={v.excerpt}
               createdAt={v.frontmatter.createdAt}
               timeToRead={v.timeToRead}
-              img={v?.frontmatter?.image?.childImageSharp?.fixed}
+              img={v?.frontmatter?.image?.childImageSharp?.fluid}
             />
           </Box>
         ))}
@@ -57,9 +56,7 @@ export const query = graphql`
           createdAt
           image {
             childImageSharp {
-              fixed {
-                width
-                height
+              fluid {
                 base64
                 tracedSVG
                 aspectRatio

@@ -12,6 +12,7 @@ import { ThemeProvider } from "emotion-theming"
 
 import Header from "./header"
 import "./layout.css"
+import { DarkModeContextProvider } from "../hooks/useDark"
 import { theme, globalCss } from "./styled"
 import { css, Global } from "@emotion/core"
 
@@ -28,42 +29,44 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Global styles={globalCss} />
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: "1080px",
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main
-          css={css`
-            min-height: 100vh;
-          `}
+      <DarkModeContextProvider>
+        <Global styles={globalCss} />
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <div
+          style={{
+            margin: `0 auto`,
+            maxWidth: "1080px",
+            padding: `0 1.0875rem 1.45rem`,
+          }}
         >
-          {children}
-        </main>
-        <footer
-          css={css`
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 5em;
-          `}
-        >
-          © {new Date().getFullYear()} TigerWest, Built with
-          <a
+          <main
             css={css`
-              color: inherit;
-              margin-left: 5px;
+              min-height: 100vh;
             `}
-            href="https://www.gatsbyjs.org"
           >
-            Gatsby
-          </a>
-        </footer>
-      </div>
+            {children}
+          </main>
+          <footer
+            css={css`
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 5em;
+            `}
+          >
+            © {new Date().getFullYear()} TigerWest, Built with
+            <a
+              css={css`
+                color: inherit;
+                margin-left: 5px;
+              `}
+              href="https://www.gatsbyjs.org"
+            >
+              Gatsby
+            </a>
+          </footer>
+        </div>
+      </DarkModeContextProvider>
     </ThemeProvider>
   )
 }
