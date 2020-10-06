@@ -134,9 +134,14 @@ export const globalCss = css`
     margin-bottom: 0.5em;
     margin-top: 1.1em;
   }
-  pre {
+  pre,
+  code {
     padding: 1em;
     margin: 1em 0;
+    line-height: 1.66;
+  }
+  deckgo-highlight-code {
+    line-height: 1.66;
   }
 
   h1 {

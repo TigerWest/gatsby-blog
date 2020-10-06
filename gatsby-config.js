@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "gatsby-blog",
   siteMetadata: {
     title: `Beom Blog`,
     description: `부족한 개발자 Beom의 블로그입니다.`,
@@ -40,6 +41,16 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         rehypePlugins: [require("rehype-slug")],
+        extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: "carbon",
+              theme: "oceanic-next",
+            },
+          },
+        ],
       },
     },
     `gatsby-plugin-fontawesome-css`,
