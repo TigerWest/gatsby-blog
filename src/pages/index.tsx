@@ -33,7 +33,7 @@ export default function PostList({ data }: any) {
             style={{ alignItems: "stretch" }}
           >
             <Card
-              title={v.fields?.slug}
+              title={v.frontmatter?.title}
               slug={v.fields?.slug}
               excerpt={v.excerpt}
               createdAt={v.frontmatter.createdAt}
