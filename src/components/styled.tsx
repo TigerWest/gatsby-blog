@@ -12,16 +12,28 @@ export const mq = facepaint([
 
 export const theme = {
   normal: {
+    header: {
+      background: "rebeccapurple",
+    },
     colors: {
       background: "rgb(248,249,250)",
       color: "black",
     },
+    card: {
+      background: "white",
+    },
   },
 
   dark: {
+    header: {
+      background: "rgba(255, 255, 255, 0.05)",
+    },
     colors: {
       background: "#100e17",
       color: "white",
+    },
+    card: {
+      background: "rgba(255, 255, 255, 0.12)",
     },
   },
 }

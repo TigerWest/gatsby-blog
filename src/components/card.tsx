@@ -1,5 +1,5 @@
-import { css } from "@emotion/core"
-import * as React from "react"
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core"
 import Img, { FixedObject, FluidObject } from "gatsby-image"
 import { Link } from "gatsby"
 import dayjs from "dayjs"
@@ -31,8 +31,9 @@ const Card: React.FunctionComponent<ICardProps> = ({
       css={css`
         display: flex;
         flex-direction: column;
-        background-color: ${isDark ? `rgba(255, 255, 255, 0.12)` : `white`};
+        background-color: ${theme.card.background};
         height: 100%;
+        transition: background-color 0.5s;
       `}
     >
       {img && (

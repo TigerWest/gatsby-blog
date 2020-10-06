@@ -1,8 +1,7 @@
-import { css } from "@emotion/core"
-import { useTheme } from "emotion-theming"
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
 import { useMainTheme } from "../hooks/useMainTheme"
 
 const Header = ({ siteTitle }: any) => {
@@ -11,16 +10,9 @@ const Header = ({ siteTitle }: any) => {
     <header
       css={css`
         color: inherit;
-        /* @media (prefers-color-scheme: dark) {
-          
-          color: inherit;
-        } */
-
-        ${isDark
-          ? `background-color: rgba(255, 255, 255, 0.05);`
-          : `background-color: rebeccapurple;`}
-
+        background-color: ${theme.header.background};
         margin-bottom: 4rem;
+        transition: background-color 0.5s;
       `}
     >
       <div

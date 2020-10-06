@@ -8,7 +8,6 @@ import { css, mq } from "../components/styled"
 
 export default function PostList({ data }: any) {
   const posts = data.allMdx
-  console.log(posts)
   return (
     <Layout>
       <SEO title={"Beom/TigerWest"} description="Beom의 블로그입니다." />
