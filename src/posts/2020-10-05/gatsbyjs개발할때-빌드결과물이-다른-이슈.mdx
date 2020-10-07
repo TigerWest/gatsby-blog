@@ -1,0 +1,45 @@
+---
+title: Gatsbyjs 개발할떄와 빌드결과물이 다를때 이슈
+image: ./gatsby-icon.png
+createdAt: 2020-10-05
+category: frontend
+tags:
+  - gatsbyjs
+  - reactjs
+  - ssr
+---
+
+gatsbyjs로 간단하게 dark mode가 들어가고 미니멀하게 블로그 리스트만 쭉 나열되는 페이지를 만드는 중이다.
+
+nextjs에서도 쉽게 만날 수 있는 이슈가 있는데 해결방법을 정리하려고 한다.
+
+현재는 window객체를 통해서 현재 media query로 prefer darkmode인지를 체크하고 있다.
+
+```typescript
+/**
+ *  window 직접 타고들어가면 빌드에러가 나오기에 상수로 대입을 하였다.
+ */
+const windowGlobal = typeof window !== "undefined" ? window : undefined
+const checkDark =
+  windowGlobal?.matchMedia &&
+  windowGlobal?.matchMedia("(prefers-color-scheme: dark)")?.matches
+```
+
+문제는 빌드시에는 반드시 서버에서는 혹은 빌드된 결과물은 당연히 항상 false로 나오고 csr로 렌더링되면 initialize시에 기본값은 true로 변경이 된다.
+
+```typescript
+const useDark = () => {
+  // 빌드시 혹은 ssr처리해주는 서버에서는 false client에서는 반드시 true
+  const [isDark, setDark] = useState(checkDark)
+}
+```
+
+서버에서 준값과 클라이언트에서 그려진값이 다르면 vdom이 다~~ 알아서 비교하고 달라진 부분을 다시 렌더링 해줄줄 알았지만 그런일은 일어나지 않는다.
+
+useEffect에서 다시 setDark(true)를 호출하여도 값은 csr기준으로 초기에 들어온 true가 그대로이기에 변경 되지않는다.
+
+즉 서버에서 그려준대로 렌더링이 된 결과물과 클라이언트 측에서 렌더링된 결과물의 css가 달라도 리액트는 저절로 탐지해주지 않는다
+
+그렇기에 코드를 작성할때 주의해야할 점은 초기 렌더링 결과물이 달라지지 않도록 신경을 써야 한다는 것이다.
+
+window나 localStorage기반 api로 값을 체크해야할것이 있다면 그것은 mount된 시점에서 체크하고 변경하도록 해야한다.

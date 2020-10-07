@@ -182,6 +182,8 @@ export const globalCss = css`
   }
   p {
     font-size: 1.25em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
   }
 
   pre {
