@@ -12,9 +12,9 @@ export default function PostList({ data }: any) {
     <Layout>
       <SEO title={"Beom/TigerWest"} description="Beom의 블로그입니다." />
       <Flex alignItems="stretch" justifyContent="stretch" flexWrap="wrap">
-        {posts?.nodes?.map(v => (
+        {posts?.nodes?.map((v, i) => (
           <Box
-            key={v.slug}
+            key={v.id}
             css={css(
               mq({
                 width: [
@@ -50,6 +50,7 @@ export const query = graphql`
       totalCount
 
       nodes {
+        id
         frontmatter {
           title
           createdAt

@@ -69,7 +69,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "yarn clean && gatsby build --prefix-paths && gh-pages -d public"
   },
   "repository": {
     "type": "git",

@@ -36,13 +36,14 @@ const Card: React.FunctionComponent<ICardProps> = ({
         transition: background-color 0.5s;
       `}
     >
+      
       {img && (
-        <div>
-          <Link to={`/posts/${slug}`}>
-            <Img fluid={{ ...img }} style={{ height: "7em" }} />
-          </Link>
-        </div>
-      )}
+      <div>
+        <Link to={`/posts/${slug}`}>
+          <Img fluid={{ ...img }} style={{ height: "7em" }} />
+        </Link>
+      </div>)} 
+      
       <Link
         css={css`
           text-decoration: none;
